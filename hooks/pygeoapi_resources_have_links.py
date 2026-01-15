@@ -36,6 +36,11 @@ def valid_yaml_with_links(config_path: str) -> bool:
                     f"pygeoapi resource {resource_block['title']} link {link['rel']} does not contain 'href'"
                 )
                 return False
+            if "rel" not in link:
+                print(
+                    f"pygeoapi resource {resource_block['title']} link {link['href']} does not contain 'rel'"
+                )
+                return False
             if link["rel"] == "documentation":
                 foundDocumentationLink = True
             if link["rel"] == "canonical":
