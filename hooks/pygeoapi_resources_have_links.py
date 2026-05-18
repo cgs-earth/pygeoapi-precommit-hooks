@@ -23,6 +23,8 @@ def valid_yaml_with_links(config_path: str) -> bool:
     for resource in pygeoapi_config["resources"]:
 
         resource_block = pygeoapi_config["resources"][resource]
+        if resource_block["type"] == "process":
+            continue
         if "links" not in resource_block:
             print(f"pygeoapi resource {resource} does not contain 'links'; each resource must have at least one link")
             return False
